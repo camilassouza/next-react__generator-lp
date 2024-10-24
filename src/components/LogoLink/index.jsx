@@ -4,7 +4,7 @@ import { Heading } from '../Heading';
 import Link from 'next/link';
 
 export const LogoLink = ({ text, srcImg = '', link }) => {
-  const nextLink = link.match(/^\//) ? true : false;
+  const nextLink = link?.match(/^\//) ? true : false;
 
   if (nextLink) {
     return (

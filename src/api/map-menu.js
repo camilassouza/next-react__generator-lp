@@ -1,6 +1,6 @@
 export const mapMenu = (menu = {}) => {
   if (!menu || menu.length === 0) {
-    return;
+    return [];
   }
 
   const {

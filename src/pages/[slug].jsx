@@ -15,8 +15,7 @@ export const getStaticPaths = async () => {
   paths = [paths].map((page) => {
     return { params: { slug: page.slug } };
   });
-  
-  console.log('paths', paths)
+
   return {
     paths,
     fallback: false,
@@ -31,7 +30,7 @@ export const getStaticProps = async (ctx) => {
   } catch (e) {
     data = null;
   }
-  console.log('data hew', data)
+
   if (!data || data === 'undefined') {
     return {
       notFound: true,

@@ -6,16 +6,16 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "export": "next export",
     "storybook": "storybook dev -p 6007",
     "build-storybook": "storybook build",
-    "test": "jest"
+    "test": "jest",
+    "deploy-static": "next build"
   },
   "dependencies": {
     "@babel/runtime": "^7.25.7",
     "jest": "^29.7.0",
     "jest-styled-components": "^7.2.0",
-    "next": "14.2.15",
+    "next": "^15.0.1",
     "prop-types": "^15.7.2",
     "react": "18.3.1",
     "react-dom": "18.3.1",
@@ -47,6 +47,7 @@
     "globals": "^15.10.0",
     "jest-environment-jsdom": "^29.7.0",
     "prettier": "^2.2.1",
-    "storybook": "^8.3.5"
+    "storybook": "^8.3.5",
+    "typescript": "^5.6.3"
   }
 }
