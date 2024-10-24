@@ -1,13 +1,11 @@
 import P from 'prop-types';
 import { Heading } from '../Heading';
 import { SectionBackground } from '../SectionBackground';
-import { TextComponent } from '../TextComponent';
 import * as Styled from './styles';
 
 export const GridImage = ({
   title,
-  description,
-  grid,
+  image,
   background = false,
   sectionId = '',
 }) => {
@@ -17,11 +15,14 @@ export const GridImage = ({
         <Heading size="huge" uppercase colorDark={!background} as="h2">
           {title}
         </Heading>
-        <TextComponent>{description}</TextComponent>
+
         <Styled.Grid>
-          {grid.map((el) => (
-            <Styled.GridElement key={`${el.srcImg}${el.altText}`}>
-              <Styled.Image src={el.srcImg} alt={el.altText} />
+          {image.data.map((el) => (
+            <Styled.GridElement key={el.id}>
+              <Styled.Image
+                src={el.attributes.url} // Acessando a URL aqui
+                alt={el.attributes.alternativeText || el.attributes.name} // Usando alternativeText ou name como fallback
+              />
             </Styled.GridElement>
           ))}
         </Styled.Grid>
@@ -33,12 +34,17 @@ export const GridImage = ({
 GridImage.propTypes = {
   background: P.bool,
   title: P.string.isRequired,
-  description: P.string.isRequired,
-  grid: P.arrayOf(
-    P.shape({
-      altText: P.string.isRequired,
-      srcImg: P.string.isRequired,
-    }),
-  ).isRequired,
+  image: P.shape({
+    data: P.arrayOf(
+      P.shape({
+        id: P.number.isRequired, // ID adicionado para a chave
+        attributes: P.shape({
+          url: P.string.isRequired,
+          alternativeText: P.string,
+          name: P.string.isRequired,
+        }).isRequired,
+      }),
+    ).isRequired,
+  }).isRequired,
   sectionId: P.string,
 };

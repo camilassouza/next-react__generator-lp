@@ -1,12 +1,21 @@
 export const mapSections = (sections = []) => {
   return sections.map((section) => {
-    if (section.__component === 'section.section-two-columns') {
+    if (
+      section.__component === 'section.section-two-columns' ||
+      section.component === 'section.section-two-columns'
+    ) {
       return mapSectionTwoColumns(section);
     }
-    if (section.__component === 'section.section-content') {
+    if (
+      section.__component === 'section.section-content' ||
+      section.component === 'section.section-content'
+    ) {
       return mapSectionContent(section);
     }
-    if (section.__component === 'section.section-grid') {
+    if (
+      section.__component === 'section.section-grid' ||
+      section.component === 'section.section-grid'
+    ) {
       const { text_grid = [], image_grid = [] } = section;
 
       if (text_grid.length > 0) {
@@ -28,8 +37,10 @@ export const mapSectionTwoColumns = (section = {}) => {
     title = '',
     description: text = '',
     image: { url: srcImg = '' } = '',
-    metadata: { background = false, section_id: sectionId = '' } = false,
+    metadata: { section_id: sectionId = '' } = false,
   } = section;
+
+  const background = section.background || section.metadata?.background || true;
 
   return {
     component,
@@ -46,8 +57,10 @@ export const mapSectionContent = (section = {}) => {
     __component: component = '',
     title = '',
     content: html = '',
-    metadata: { background = false, section_id: sectionId = '' } = false,
+    metadata: { section_id: sectionId = '' } = false,
   } = section;
+
+  const background = section.background || section.metadata?.background || true;
 
   return {
     component,
@@ -63,9 +76,11 @@ export const mapTextGrid = (section = {}) => {
     __component: component = '',
     title = '',
     description = '',
-    metadata: { background = false, section_id: sectionId = '' } = false,
+    metadata: { section_id: sectionId = '' } = false,
     text_grid: grid = [],
   } = section;
+
+  const background = section.background || section.metadata?.background || true;
 
   return {
     component: 'section.section-grid-text',
@@ -88,9 +103,11 @@ export const mapImageGrid = (section = {}) => {
     __component: component = '',
     title = '',
     description = '',
-    metadata: { background = false, section_id: sectionId = '' } = false,
+    metadata: { section_id: sectionId = '' } = false,
     image_grid: grid = [],
   } = section;
+
+  const background = section.background || section.metadata?.background || true;
 
   return {
     component: 'section.section-grid-image',

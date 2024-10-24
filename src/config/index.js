@@ -1,5 +1,5 @@
 export default {
-  url: 'https://strapi-landing-pages-project-2.herokuapp.com/pages/?slug=',
-  siteName: 'Otávio Miranda',
-  defaultSlug: 'landing-page',
+  url: 'https://lp-generator-strap-d6600b30f4e2.herokuapp.com/api/pages/?slug=',
+  siteName: 'camila santos',
+  defaultSlug: 'lp-strap',
 };

@@ -16,7 +16,6 @@ describe('<NavLinks />', () => {
     expect(screen.queryAllByText(/links/i)).toHaveLength(0);
   });
 
-
   it('should match snapshot', () => {
     const { container } = renderTheme(<NavLinks links={mock} />);
     expect(container.firstChild).toMatchSnapshot();

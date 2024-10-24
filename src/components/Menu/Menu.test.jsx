@@ -31,7 +31,7 @@ describe('<Menu />', () => {
     const menuContainer = button.nextSibling;
 
     expect(button).toHaveStyleRule('display', 'none');
-    
+
     expect(screen.getByLabelText('Open menu')).toBeInTheDocument();
 
     fireEvent.click(button);
